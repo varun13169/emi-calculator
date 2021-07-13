@@ -30,6 +30,8 @@ body {
 .container {
     text-align: center;
     padding: 2rem 5rem;
+    margin: auto;
+    max-width: 40rem;
 }
 
 .slider {
