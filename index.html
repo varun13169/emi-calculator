@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator</title>
+
+
+    <link href="/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <nav class="navigation">
+        <div>EMI Calculator</div>
+    </nav>
+
+    <div class="container">
+        <div class="txt-heading">Loan Amount</div>
+        <div id="txt-disp-area-loan-amt" class="txt-disp-area">0</div>
+        <input id="slider-loan-amt" class="slider" type="range" min="0" max="10000000" value="0">
+
+        <div class="txt-heading">Intrest Rate Per Annum</div>
+        <div id="txt-disp-area-int-rate" class="txt-disp-area">0</div>
+        <input id="slider-int-rate" class="slider" type="range" min="0" max="20" value="0">
+
+        <div class="txt-heading">Tenure In Years</div>
+        <div id="txt-disp-area-tenure" class="txt-disp-area">0</div>
+        <input id="slider-tenure" class="slider" type="range" min="0" max="30" value="0">
+
+        <button id="btn-cal" class="btn-cal">
+            Calculate
+        </button>
+
+        <div class="result">
+            <div>Monthly EMI</div>
+            <div id="txt-disp-area-emi" class="txt-disp-area">0</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>about</p>
+        <div>this will help you calcute your monthly emi :)</div>
+        <div>Formula for emi cal can be learned <a href="https://www.investopedia.com/terms/e/equated_monthly_installment.asp">here</a></div>
+        <!-- https://www.investopedia.com/terms/e/equated_monthly_installment.asp -->
+    </footer>
+
+    <script src="/app.js" type="text/javascript"></script>
+</body>
+
+</html>
