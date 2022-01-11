@@ -1,26 +1,28 @@
 const numMonthsInYear = 12;
 
-var sliderLoanAmt = document.querySelector("#slider-loan-amt");
-var sliderIntRate = document.querySelector("#slider-int-rate");
-var sliderTenure = document.querySelector("#slider-tenure");
+const sliderLoanAmt = document.querySelector("#slider-loan-amt");
+const sliderIntRate = document.querySelector("#slider-int-rate");
+const sliderTenure = document.querySelector("#slider-tenure");
 
-var txtDispAreaLoanAmt = document.querySelector("#txt-disp-area-loan-amt");
-var txtDispAreaIntRate = document.querySelector("#txt-disp-area-int-rate");
-var txtDispAreaTenure = document.querySelector("#txt-disp-area-tenure");
-var txtDispAreaEmi = document.querySelector("#txt-disp-area-emi");
+const txtDispAreaLoanAmt = document.querySelector("#txt-disp-area-loan-amt");
+const txtDispAreaIntRate = document.querySelector("#txt-disp-area-int-rate");
+const txtDispAreaTenure = document.querySelector("#txt-disp-area-tenure");
+const txtDispAreaEmi = document.querySelector("#txt-disp-area-emi");
 
-var btnCalc = document.querySelector("#btn-cal");
+const btnCalc = document.querySelector("#btn-cal");
 
-sliderLoanAmt.addEventListener("change", onChangeHandler);
-sliderIntRate.addEventListener("change", onChangeHandler);
-sliderTenure.addEventListener("change", onChangeHandler);
+const getEMI = (P, r, n) => {
+    const monthlyRate = r / numMonthsInYear;
+    const intermCalc = ((1 + monthlyRate) * n)
+    const emi = ( ( (P * r) * intermCalc ) / ( (numMonthsInYear * intermCalc) -1 ) * 10 ).toFixed(2);
+    
+    return emi;
+}
 
-btnCalc.addEventListener("click", onClickHandler)
-
-function onChangeHandler(e) {
-    var sliderTargetId = e.target.id;
-    var sliderTarget = e.target;
-    var textAreaTarget = null;
+const onChangeHandler = e => {
+    const sliderTargetId = e.target.id;
+    const sliderTarget = e.target;
+    let textAreaTarget = null;
 
     switch (sliderTargetId) {
         case "slider-loan-amt":
@@ -38,12 +40,12 @@ function onChangeHandler(e) {
     textAreaTarget.innerText = sliderTarget.value;
 }
 
-function onClickHandler(e) {
-    var loanAmt = sliderLoanAmt.value;
-    var intRatePerAnnum = sliderIntRate.value / 100;
-    var tenureInMonths = sliderTenure.value * 12;
+const onClickHandler = e => {
+    const loanAmt = sliderLoanAmt.value;
+    const intRatePerAnnum = sliderIntRate.value / 100;
+    const tenureInMonths = sliderTenure.value * 12;
 
-    var emi = getEMI(loanAmt, intRatePerAnnum, tenureInMonths);
+    const emi = getEMI(loanAmt, intRatePerAnnum, tenureInMonths);
     // For Debug
     // emi = getEMI(50000, 3.5/100, 120);
 
@@ -52,14 +54,10 @@ function onClickHandler(e) {
 
 }
 
-function getEMI(P, r, n) {
-    var emi = P;
 
-    var monthlyRate = r / numMonthsInYear;
-    var intermCalc = ((1 + monthlyRate) * n)
-    var emi = ( (P * r) * intermCalc ) / ( (numMonthsInYear * intermCalc) -1 );
-    emi = emi * 10;
-    emi = emi.toFixed(2);
-    
-    return emi;
-}
+
+sliderLoanAmt.addEventListener("change", onChangeHandler);
+sliderIntRate.addEventListener("change", onChangeHandler);
+sliderTenure.addEventListener("change", onChangeHandler);
+
+btnCalc.addEventListener("click", onClickHandler)
