@@ -59,7 +59,6 @@ footer {
     background-color: var(--primary-color);
     width: 100%;
     min-height: 5rem;
-    position: fixed;
     bottom: 0;
     color: white;
     text-align: center;
